@@ -18,45 +18,27 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 public class IOSNativeTest {
-    private Process process;
     private IOSDriver driver;
     
     @Before
     public void setUp() throws IOException, InterruptedException {
-        File classpathRoot = new File(System.getProperty("user.dir"));
-        System.out.println("SUDO_COMMAND: " + System.getenv("SUDO_COMMAND"));
-        Runtime runtime = Runtime.getRuntime();
-        File appiumLog = new File(classpathRoot, "appium.log");
-        process = runtime.exec(new String[]{
-                "/usr/local/bin/node",
-                "/usr/local/lib/node_modules/appium/lib/server/main.js",
-                "--log",
-                appiumLog.getAbsolutePath()});
-        Thread.sleep(10000);
-        if (process != null) {
-            System.out.println("Appium server started with " + appiumLog.getAbsolutePath());
-        }
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName", "iPhone 5");
         capabilities.setCapability("platformName", "iOS");
         capabilities.setCapability("platformVersion", "8.2");
+        File classpathRoot = new File(System.getProperty("user.dir"));
         File app = new File(classpathRoot, "../../apps/TestApp/TestApp.app");
         capabilities.setCapability("app", app.getAbsolutePath());
         driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         WebDriverAdapter.setAdapter(driver);
     }
-    
+
     @After
     public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
-        if (process != null) {
-            process.destroy();
-        }
+        driver.quit();
     }
-    
+
     @Test
     public void 計算処理が正しく行われること() {
         driver.findElementByAccessibilityId("IntegerA").sendKeys("123");
