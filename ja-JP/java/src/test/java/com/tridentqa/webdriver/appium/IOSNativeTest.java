@@ -3,9 +3,7 @@ package com.tridentqa.webdriver.appium;
 import io.appium.java_client.ios.IOSDriver;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
@@ -18,10 +16,14 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 public class IOSNativeTest {
+    private AppiumLauncher appium;
     private IOSDriver driver;
     
     @Before
-    public void setUp() throws IOException, InterruptedException {
+    public void setUp() throws MalformedURLException {
+        appium = new AppiumLauncher();
+        appium.launch();
+        
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName", "iPhone 5");
         capabilities.setCapability("platformName", "iOS");
@@ -33,12 +35,17 @@ public class IOSNativeTest {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         WebDriverAdapter.setAdapter(driver);
     }
-
+    
     @After
     public void tearDown() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
+        if (appium != null) {
+            appium.stop();
+        }
     }
-
+    
     @Test
     public void 計算処理が正しく行われること() {
         driver.findElementByAccessibilityId("IntegerA").sendKeys("123");

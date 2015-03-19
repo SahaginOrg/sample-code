@@ -12,8 +12,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.sahagin.runlib.external.adapter.selendroid.SelendroidAdapter;
 import com.tridentqa.webdriver.pages.ContactPage;
 
-//- Execute test on Android emulator
-//- Assume Selendroid server is started
+//- Android emulator and Selendroid server must be launched before this test
+//- must set environment variable ANDROID_HOME
 public class SelendroidTest {
     private WebDriver driver;
 

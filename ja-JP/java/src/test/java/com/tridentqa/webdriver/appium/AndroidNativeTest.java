@@ -16,13 +16,17 @@ import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.sahagin.runlib.external.adapter.appium.AppiumAdapter;
 
-//- Execute test on Android emulator
-//- Assume Appium server is started
+//- Android emulator must be launched before this test
+//- must set environment variable ANDROID_HOME
 public class AndroidNativeTest {
+    private AppiumLauncher appium;
     private AppiumDriver driver;
 
     @Before
     public void setUp() throws MalformedURLException {
+        appium = new AppiumLauncher();
+        appium.launch();
+        
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("automationName","Appium");
         capabilities.setCapability("platformName", "Android");
@@ -40,6 +44,9 @@ public class AndroidNativeTest {
     @After
     public void tearDown() {
         driver.quit();
+        if (appium != null) {
+            appium.stop();
+        }
     }
   
     @Test
