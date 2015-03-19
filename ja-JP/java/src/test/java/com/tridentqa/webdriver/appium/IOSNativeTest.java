@@ -4,7 +4,6 @@ import io.appium.java_client.ios.IOSDriver;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
@@ -22,20 +21,21 @@ public class IOSNativeTest {
     
     @Before
     public void setUp() throws IOException, InterruptedException {
-
+        File classpathRoot = new File(System.getProperty("user.dir"));
+        
         Runtime runtime = Runtime.getRuntime();
+        File appiumLog = new File(classpathRoot, "appium.log");
         process = runtime.exec("/usr/local/bin/node /usr/local/lib/node_modules/appium/lib/server/main.js"
-                + " --log /Users/itonozomi/Desktop/app.log");
-        Thread.sleep(5000);
+                + " --log " + appiumLog.getAbsolutePath());
+        Thread.sleep(10000);
         if (process != null) {
-            System.out.println("Appium server started");
+            System.out.println("Appium server started with " + appiumLog.getAbsolutePath());
         }
         
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName", "iPhone 5");
         capabilities.setCapability("platformName", "iOS");
         capabilities.setCapability("platformVersion", "8.2");
-        File classpathRoot = new File(System.getProperty("user.dir"));
         File app = new File(classpathRoot, "../../apps/TestApp/TestApp.app");
         capabilities.setCapability("app", app.getAbsolutePath());
         driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
