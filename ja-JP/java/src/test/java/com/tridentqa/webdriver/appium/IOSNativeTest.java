@@ -16,13 +16,11 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 public class IOSNativeTest {
-    private AppiumLauncher appium;
     private IOSDriver driver;
     
     @Before
     public void setUp() throws MalformedURLException {
-        appium = new AppiumLauncher();
-        appium.launch();
+        AppiumLauncher.launch();
         
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName", "iPhone 5");
@@ -40,9 +38,6 @@ public class IOSNativeTest {
     public void tearDown() {
         if (driver != null) {
             driver.quit();
-        }
-        if (appium != null) {
-            appium.stop();
         }
     }
     

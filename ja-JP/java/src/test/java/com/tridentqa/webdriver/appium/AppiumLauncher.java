@@ -3,13 +3,17 @@ package com.tridentqa.webdriver.appium;
 import java.io.File;
 import java.io.IOException;
 
-// TODO Since launching appium server is very slow,
-// you should launch appium server only once,
-// and try to restart only when the server is hung up.
+// TODO re-launch appium server if it is hung up.
 public class AppiumLauncher {
-    private Process process;
+    private static Process process;
     
-    public void launch() {
+    // private constructor
+    private AppiumLauncher() {}
+    
+    public static void launch() {
+        if (process != null) {
+            return; // already launched
+        }
         File classpathRoot = new File(System.getProperty("user.dir"));
         Runtime runtime = Runtime.getRuntime();
         // TODO fixed log path
@@ -28,6 +32,12 @@ public class AppiumLauncher {
             throw new RuntimeException("fail to launch appium server");
         }
 
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            public void run() {
+                process.destroy();
+            }
+        });
+
         // wait for appium server start
         // TODO should not use fixed value
         try {
@@ -36,10 +46,5 @@ public class AppiumLauncher {
             throw new RuntimeException(e);
         }
     }
-    
-    public void stop() {
-        if (process != null) {
-            process.destroy();
-        }
-    }
+
 }

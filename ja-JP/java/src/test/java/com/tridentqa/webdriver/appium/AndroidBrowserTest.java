@@ -23,13 +23,11 @@ import com.tridentqa.webdriver.pages.ContactPage;
 //- Android emulator must be launched before this test
 //- must set environment variable ANDROID_HOME
 public class AndroidBrowserTest {
-    private AppiumLauncher appium;
     private AppiumDriver driver;
 
     @Before
     public void setUp() throws MalformedURLException {
-        appium = new AppiumLauncher();
-        appium.launch();
+        AppiumLauncher.launch();
         
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("automationName","Appium");
@@ -64,9 +62,6 @@ public class AndroidBrowserTest {
     @After
     public void tearDown() {
         driver.quit();
-        if (appium != null) {
-            appium.stop();
-        }
     }
     
     @Test

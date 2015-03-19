@@ -19,13 +19,11 @@ import org.sahagin.runlib.external.adapter.appium.AppiumAdapter;
 //- Android emulator must be launched before this test
 //- must set environment variable ANDROID_HOME
 public class AndroidNativeTest {
-    private AppiumLauncher appium;
     private AppiumDriver driver;
 
     @Before
-    public void setUp() throws MalformedURLException {
-        appium = new AppiumLauncher();
-        appium.launch();
+    public void setUp() throws MalformedURLException {        
+        AppiumLauncher.launch();
         
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("automationName","Appium");
@@ -44,9 +42,6 @@ public class AndroidNativeTest {
     @After
     public void tearDown() {
         driver.quit();
-        if (appium != null) {
-            appium.stop();
-        }
     }
   
     @Test
