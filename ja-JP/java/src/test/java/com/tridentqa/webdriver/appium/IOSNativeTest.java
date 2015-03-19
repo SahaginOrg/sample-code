@@ -36,11 +36,10 @@ public class IOSNativeTest {
     
     @After
     public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
+        driver.quit();
+        AppiumLauncher.stop();
     }
-    
+
     @Test
     public void 計算処理が正しく行われること() {
         driver.findElementByAccessibilityId("IntegerA").sendKeys("123");

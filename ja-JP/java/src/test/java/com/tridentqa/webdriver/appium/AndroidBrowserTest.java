@@ -62,6 +62,7 @@ public class AndroidBrowserTest {
     @After
     public void tearDown() {
         driver.quit();
+        AppiumLauncher.stop();
     }
     
     @Test
@@ -73,6 +74,6 @@ public class AndroidBrowserTest {
         contact.setOrganization("TRIDENT");
         contact.setSubject("テスト");
         contact.setMessage("テスト送信です");
-        contact.send();      
+        contact.send();
     }
 }

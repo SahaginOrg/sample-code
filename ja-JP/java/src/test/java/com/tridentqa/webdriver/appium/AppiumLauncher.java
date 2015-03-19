@@ -24,7 +24,9 @@ public class AppiumLauncher {
                     "/usr/local/bin/node",
                     "/usr/local/lib/node_modules/appium/lib/server/main.js", 
                     "--log", 
-                    appiumLog.getAbsolutePath()});
+                    appiumLog.getAbsolutePath(),
+                    "--log-level",
+                    "debug:debug"});
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -32,18 +34,26 @@ public class AppiumLauncher {
             throw new RuntimeException("fail to launch appium server");
         }
 
+        /*
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
-                process.destroy();
+                stop();
             }
-        });
+        });*/
 
         // wait for appium server start
         // TODO should not use fixed value
         try {
-            Thread.sleep(15000);
+            Thread.sleep(7000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
+        }
+    }
+    
+    public static void stop() {
+        if (process != null) {
+            process.destroy();
+            process = null;
         }
     }
 

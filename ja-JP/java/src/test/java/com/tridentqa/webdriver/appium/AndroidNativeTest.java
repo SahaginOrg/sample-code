@@ -42,6 +42,7 @@ public class AndroidNativeTest {
     @After
     public void tearDown() {
         driver.quit();
+        AppiumLauncher.stop();
     }
   
     @Test
