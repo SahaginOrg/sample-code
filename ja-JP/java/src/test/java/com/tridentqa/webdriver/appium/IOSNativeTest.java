@@ -3,6 +3,7 @@ package com.tridentqa.webdriver.appium;
 import io.appium.java_client.ios.IOSDriver;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -16,10 +17,20 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 public class IOSNativeTest {
+    private Process process;
     private IOSDriver driver;
     
     @Before
-    public void setUp() throws MalformedURLException {
+    public void setUp() throws IOException, InterruptedException {
+
+        Runtime runtime = Runtime.getRuntime();
+        process = runtime.exec("/usr/local/bin/node /usr/local/lib/node_modules/appium/lib/server/main.js"
+                + " --log /Users/itonozomi/Desktop/app.log");
+        Thread.sleep(5000);
+        if (process != null) {
+            System.out.println("Appium server started");
+        }
+        
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName", "iPhone 5");
         capabilities.setCapability("platformName", "iOS");
@@ -34,7 +45,12 @@ public class IOSNativeTest {
     
     @After
     public void tearDown() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
+        if (process != null) {
+            process.destroy();
+        }
     }
     
     @Test
