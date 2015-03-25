@@ -5,7 +5,7 @@
   <version>0.99-SNAPSHOT</version>
   <properties>
     <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
-    <sahagin.version>0.7-SNAPSHOT</sahagin.version>
+    <sahagin.version>0.7</sahagin.version>
   </properties>
     <distributionManagement>
     <snapshotRepository>
