@@ -5,8 +5,14 @@
   <version>0.99-SNAPSHOT</version>
   <properties>
     <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
-    <sahagin.version>0.6</sahagin.version>
+    <sahagin.version>0.7-SNAPSHOT</sahagin.version>
   </properties>
+    <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
   <dependencies>
     <dependency>
       <groupId>org.sahagin</groupId>  

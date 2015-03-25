@@ -41,7 +41,7 @@ public class AndroidBrowserTest {
             
             // cannot take screen capture with chromedriver..
             @Override
-            public byte[] captueScreen() {
+            public byte[] captureScreen() {
                 byte[] result;
                 String contextName = driver.getContext();
                 driver.context("NATIVE_APP");
