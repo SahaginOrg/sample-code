@@ -1,12 +1,3 @@
-
-ja-JP/java/.classpath
-
-ja-JP/java/.project
-
-ja-JP/java/appium.log
-
-*.log
-
-*.log
-
+.classpath
+.project
 *.log
