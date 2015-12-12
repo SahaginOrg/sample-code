@@ -1,0 +1,5 @@
+java:
+  testDir: src/test/java
+
+common:
+  userLocale: ja-JP
