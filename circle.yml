@@ -4,9 +4,10 @@ general:
 
 test:
   override:
-  - mvn -f java/desktop/ja-JP/pom.xml clean test
+    - mvn -f java/desktop/ja-JP/pom.xml clean test
   post:
-  # show Junit test report on circleCI
-  - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-  - find . -type f -regex ".*/desktop/ja-JP/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
-  - curl -X POST --data-urlencode 'payload={"channel": "#build", "username": "circleci", "text": "Sahagin report:\nhttps://circle-artifacts.com/gh/SahaginOrg/sample-code/7/artifacts/0/home/ubuntu/sample-code/java/desktop/ja-JP/sahagin-report/index.html"}' https://qwintet.slack.com/services/hooks/incoming-webhook?token=https://hooks.slack.com/services/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
+    # show Junit test report on circleCI
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+    - find . -type f -regex ".*/desktop/ja-JP/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+    # notify to slack with custom message
+    - curl -X POST --data-urlencode 'payload={"channel": "#build", "username": "circleci", "text": "Sahagin report:\nhttps://circle-artifacts.com/gh/SahaginOrg/sample-code/7/artifacts/0/home/ubuntu/sample-code/java/desktop/ja-JP/sahagin-report/index.html"}' https://qwintet.slack.com/services/hooks/incoming-webhook?token=https://hooks.slack.com/services/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
