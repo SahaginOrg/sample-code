@@ -2,12 +2,7 @@ test:
   override:
     - mvn -f java/desktop/ja-JP/pom.xml clean test
   post:
-    # show Junit test report on circleCI
-    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-    - find . -type f -regex ".*/desktop/ja-JP/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
-    # move sahagin report
+    # move sahagin report to artifact directory
     - mv java/desktop/ja-JP/sahagin-report $CIRCLE_ARTIFACTS
-    - echo $CIRCLE_ARTIFACTS
-    - echo $CIRCLE_BUILD_NUM
-    - ARTIFACT_URL=https://circle-artifacts.com/gh/SahaginOrg/sample-code/$CIRCLE_BUILD_NUM/artifacts/0$CIRCLE_ARTIFACTS/sahagin-report/index.html echo $ARTIFACT_URL
-    - curl -X POST --data-urlencode 'payload={"channel":"#build", "username":"circleci", "text":"<'"https://circle-artifacts.com/gh/SahaginOrg/sample-code/$CIRCLE_BUILD_NUM/artifacts/0$CIRCLE_ARTIFACTS/sahagin-report/index.html"'|Sahagin report>"}' https://hooks.slack.com/services/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
+    # notify sahagin report URL to slack room
+    - curl -X POST --data-urlencode 'payload={"channel":"#build", "username":"circleci", "text":"<'"https://circle-artifacts.com/gh/SahaginOrg/sample-code/$CIRCLE_BUILD_NUM/artifacts/0$CIRCLE_ARTIFACTS/sahagin-report/index.html"'|[WebDriver Test Report by Sahagin]>"}' https://hooks.slack.com/services/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
