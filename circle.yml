@@ -4,4 +4,4 @@ test:
   post:
   # show Junit test report on circleCI
   - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-  - find . -type f -regex ".*/desktop/ja-JP/target/surefire-reports/TEST-org.sahagin.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+  - find . -type f -regex ".*/desktop/ja-JP/target/surefire-reports/*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
