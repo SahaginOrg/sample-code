@@ -1,4 +1,4 @@
-package com.tridentqa.webdriver.pages;
+package com.tridentqa.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

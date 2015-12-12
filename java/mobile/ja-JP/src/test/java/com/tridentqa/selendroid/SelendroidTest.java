@@ -1,4 +1,4 @@
-package com.tridentqa.webdriver.selendroid;
+package com.tridentqa.selendroid;
 
 import io.selendroid.client.Configuration;
 import io.selendroid.client.DriverCommand;
@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.sahagin.runlib.external.adapter.selendroid.SelendroidAdapter;
-import com.tridentqa.webdriver.pages.ContactPage;
+import com.tridentqa.pages.ContactPage;
 
 //- Android emulator and Selendroid server must be launched before this test
 //- must set environment variable ANDROID_HOME

@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>sahagin-sample-code</groupId>
-  <artifactId>sahagin-mobile-ja-JP-java-sample</artifactId>
+  <artifactId>sahagin-desktop-ja-JP-java-sample</artifactId>
   <version>0.99-SNAPSHOT</version>
   <properties>
     <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
@@ -14,24 +14,14 @@
        <version>${sahagin.version}</version> 
     </dependency>
     <dependency>
-      <groupId>io.appium</groupId>
-      <artifactId>java-client</artifactId>
-      <version>3.3.0</version>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>2.48.2</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>    
-    </dependency>
-    <dependency>
-      <groupId>io.selendroid</groupId>
-      <version>0.17.0</version>
-      <artifactId>selendroid-standalone</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.selendroid</groupId>
-      <version>0.17.0</version>
-      <artifactId>selendroid-client</artifactId>
     </dependency>
   </dependencies>
   <build>

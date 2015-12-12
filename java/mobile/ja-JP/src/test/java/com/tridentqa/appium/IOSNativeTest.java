@@ -1,4 +1,4 @@
-package com.tridentqa.webdriver.appium;
+package com.tridentqa.appium;
 
 import io.appium.java_client.ios.IOSDriver;
 

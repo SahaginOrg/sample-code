@@ -1,4 +1,4 @@
-package com.tridentqa.webdriver.appium;
+package com.tridentqa.appium;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -17,7 +17,7 @@ import org.sahagin.runlib.external.adapter.AdapterContainer;
 import org.sahagin.runlib.external.adapter.ScreenCaptureAdapter;
 import org.sahagin.runlib.external.adapter.appium.AppiumAdapter;
 
-import com.tridentqa.webdriver.pages.ContactPage;
+import com.tridentqa.pages.ContactPage;
 
 
 //- Android emulator must be launched before this test

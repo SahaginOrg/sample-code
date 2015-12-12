@@ -1,4 +1,4 @@
-package com.tridentqa.webdriver.appium;
+package com.tridentqa.appium;
 
 import java.io.File;
 import java.io.IOException;
