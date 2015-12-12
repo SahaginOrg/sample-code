@@ -1,3 +1,7 @@
+general:
+  artifacts:
+    - "java/desktop/ja-JP/sahagin-report"
+
 test:
   override:
   - mvn -f java/desktop/ja-JP/pom.xml clean test
