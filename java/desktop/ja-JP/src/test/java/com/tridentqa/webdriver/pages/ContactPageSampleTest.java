@@ -10,7 +10,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.sahagin.runlib.external.adapter.webdriver.WebDriverAdapter;
 
-@RunWith(Parameterized.class)
 public class ContactPageSampleTest {
         
     @Test
