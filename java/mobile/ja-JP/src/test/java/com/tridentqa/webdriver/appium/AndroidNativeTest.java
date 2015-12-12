@@ -30,7 +30,7 @@ public class AndroidNativeTest {
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("deviceName","Android Emulator");
         File classpathRoot = new File(System.getProperty("user.dir"));
-        File app = new File(classpathRoot, "../../apps/ContactManager/ContactManager.apk");
+        File app = new File(classpathRoot, "../../../apps/ContactManager/ContactManager.apk");
         capabilities.setCapability("app", app.getAbsolutePath());
         capabilities.setCapability("appPackage", "com.example.android.contactmanager");
         capabilities.setCapability("appActivity", ".ContactManager");

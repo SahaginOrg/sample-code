@@ -27,7 +27,7 @@ public class IOSNativeTest {
         capabilities.setCapability("platformName", "iOS");
         capabilities.setCapability("platformVersion", "8.2");
         File classpathRoot = new File(System.getProperty("user.dir"));
-        File app = new File(classpathRoot, "../../apps/TestApp/TestApp.app");
+        File app = new File(classpathRoot, "../../../apps/TestApp/TestApp.app");
         capabilities.setCapability("app", app.getAbsolutePath());
         driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);

@@ -2,10 +2,10 @@ package com.tridentqa.webdriver.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.sahagin.runlib.external.Page;
+import org.sahagin.runlib.external.PageDoc;
 import org.sahagin.runlib.external.TestDoc;
 
-@Page(value = "問い合わせページ")
+@PageDoc(value = "問い合わせページ")
 public class ContactPage {
     private WebDriver driver;
 
