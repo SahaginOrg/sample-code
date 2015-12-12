@@ -31,7 +31,7 @@ public class ContactPageSampleTest {
         wd.findElement(By.name("your-email")).sendKeys("***@***.com");
         wd.findElement(By.name("your-organization")).sendKeys("TRIDENT Inc.");
         wd.findElement(By.name("your-subject")).sendKeys("テスト");
-        wd.findElement(By.name("your-message")).sendKeys("テスト送信です");
+        wd.findElement(By.name("your-messagef")).sendKeys("テスト送信です");
         wd.findElement(By.cssSelector("input.wpcf7-submit")).click();
     }
 }
