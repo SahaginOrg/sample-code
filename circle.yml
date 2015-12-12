@@ -11,6 +11,6 @@ test:
     - echo $CIRCLE_BUILD_NUM
     - ls $CIRCLE_ARTIFACTS
     # notify to slack with custom message
-    - ARTIFACT_URL=https://circle-artifacts.com/gh/SahaginOrg/sample-code/${CIRCLE_BUILD_NUM}/artifacts/0${CIRCLE_ARTIFACTS}/sahagin-report/index.html
+    - ARTIFACT_URL="https://circle-artifacts.com/gh/SahaginOrg/sample-code/${CIRCLE_BUILD_NUM}/artifacts/0${CIRCLE_ARTIFACTS}/sahagin-report/index.html"
     - echo $ARTIFACT_URL
-    - curl -X POST --data-urlencode 'payload={"channel":"#build", "username":"circleci", "text":"<'${ARTIFACT_URL}'|Sahagin report>"}' https://hooks.slack.com/services/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
+    - curl -X POST --data-urlencode 'payload={"channel":"#build", "username":"circleci", "text":"<'"${ARTIFACT_URL}"'|Sahagin report>"}' https://hooks.slack.com/services/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
