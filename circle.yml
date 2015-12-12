@@ -1,11 +1,3 @@
-machine:
-  environment:
-    LANG: ja_JP.UTF-8
-
-general:
-  artifacts:
-    - "java/desktop/ja-JP/sahagin-report"
-
 test:
   override:
     - mvn -f java/desktop/ja-JP/pom.xml clean test
@@ -13,5 +5,7 @@ test:
     # show Junit test report on circleCI
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - find . -type f -regex ".*/desktop/ja-JP/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+    # move sahagin report
+    - mv java/desktop/ja-JP/sahagin-report $CIRCLE_ARTIFACTS
     # notify to slack with custom message
-    - curl -X POST --data-urlencode 'payload={"channel":"#build", "username":"circleci", "text":"テスト完了 '"$CIRCLE_ARTIFACTS"'<https://circle-artifacts.com/gh/SahaginOrg/sample-code/7/artifacts/0/home/ubuntu/sample-code/java/desktop/ja-JP/sahagin-report/index.html|Sahagin report>"}' https://hooks.slack.com/services/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
+    - curl -X POST --data-urlencode 'payload={"channel":"#build", "username":"circleci", "text":'$$CIRCLE_ARTIFACTS'" __<https://circle-artifacts.com/gh/SahaginOrg/sample-code/7/artifacts/0/home/ubuntu/sample-code/java/desktop/ja-JP/sahagin-report/index.html|Sahagin report>"}' https://hooks.slack.com/services/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
