@@ -1,52 +1,52 @@
 package com.tridentqa.webdriver.pages;
 
-import java.util.Arrays;
-import java.util.Collection;
-
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.sahagin.runlib.external.adapter.webdriver.WebDriverAdapter;
 
 @RunWith(Parameterized.class)
 public class ContactPageSampleTest {
-    private Class<WebDriver> driverClass;
-    private WebDriver wd;
-    
-    @Before
-    public void setUp() throws InstantiationException, IllegalAccessException {
-        wd = driverClass.newInstance();
+        
+    @Test
+    public void Firefoxでの問い合わせが成功すること() {
+        WebDriver wd = new FirefoxDriver();
         WebDriverAdapter.setAdapter(wd);
-    }
-    
-    @After
-    public void tearDown() {
-        if (wd != null) {
+        try {
+            testMain(wd);
+        } finally {
             wd.quit();
         }
     }
-
-    @Parameters(name = "{1}")
-    public static Collection<Object[]> testData() {
-        return Arrays.asList(new Object[][]{
-                {FirefoxDriver.class, "Firefox"}, 
-                {ChromeDriver.class, "Chrome"}
-        });
-    }
     
-    public ContactPageSampleTest(Class<WebDriver> driverClass, String driverName) {
-        this.driverClass = driverClass;
+    @Test
+    public void Chromeでの問い合わせが成功すること() {
+        WebDriver wd = new ChromeDriver();
+        WebDriverAdapter.setAdapter(wd);
+        try {
+            testMain(wd);
+        } finally {
+            wd.quit();
+        }
     }
     
     @Test
-    public void 問い合わせが成功すること() {
+    public void PhantomJSでの問い合わせが成功すること() {
+        WebDriver wd = new PhantomJSDriver();
+        WebDriverAdapter.setAdapter(wd);
+        try {
+            testMain(wd);
+        } finally {
+            wd.quit();
+        }
+    }
+    
+    private void testMain(WebDriver wd) {
         wd.get("http://www-demo.trident-qa.com/contact/");
         wd.findElement(By.name("your-name")).sendKeys("テストユーザー");
         wd.findElement(By.name("your-email")).sendKeys("***@***.com");
