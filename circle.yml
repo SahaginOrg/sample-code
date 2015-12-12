@@ -10,4 +10,4 @@ test:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - find . -type f -regex ".*/desktop/ja-JP/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
     # notify to slack with custom message
-    - curl -X POST --data-urlencode 'payload={channel\: #build}
+    - curl -X POST --data-urlencode 'payload={channel\: #build}'
