@@ -5,4 +5,4 @@ test:
     # move sahagin report to artifact directory
     - mv java/desktop/ja-JP/sahagin-report $CIRCLE_ARTIFACTS
     # notify sahagin report URL to slack room
-    - curl -X POST --data-urlencode 'payload={"channel":"#build", "username":"circleci", "text":"<'"https://circle-artifacts.com/gh/SahaginOrg/sample-code/$CIRCLE_BUILD_NUM/artifacts/0$CIRCLE_ARTIFACTS/sahagin-report/index.html"'|Selenium Test Report by Sahagin>"}' https://hooks.slack.com/services/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
+    - curl -X POST --data-urlencode 'payload={"channel":"#build", "username":"circleci", "text":"<'"https://circle-artifacts.com/gh/SahaginOrg/sample-code/$CIRCLE_BUILD_NUM/artifacts/0$CIRCLE_ARTIFACTS/sahagin-report/index.html|Selenium Test Report by Sahagin (#$CIRCLE_BUILD_NUM)>"'"}' https://hooks.slack.com/services/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
