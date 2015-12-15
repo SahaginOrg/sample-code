@@ -1,4 +1,4 @@
-package sample;
+package com.tridentqa.webdriver;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
